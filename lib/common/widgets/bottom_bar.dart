@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pets_mall/Screen/account/screens/account_screen.dart';
 import 'package:pets_mall/Screen/home/screens/home_screen.dart';
 import 'package:pets_mall/constant/globalVarable.dart';
 
@@ -25,7 +26,7 @@ class _BottomBarState extends State<BottomBar> {
       child: Text("Cart Page"),
     ),
     const Center(
-      child: Text("Profile Page"),
+      child: AccountScreen(),
     )
   ];
 
