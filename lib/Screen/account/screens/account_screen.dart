@@ -22,6 +22,10 @@ class AccountScreen extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.topLeft,
+                // child: Text(
+                //   "Pets Mall",
+                //   style: TextStyle(fontSize: 22, color: Colors.black),
+                // ),
                 child: Image.asset(
                   "assets/images/amazon_in.png",
                   width: 120,

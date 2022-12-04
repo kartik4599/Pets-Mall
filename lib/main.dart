@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pets_mall/Screen/admin/screen/admin_screen.dart';
 import 'package:pets_mall/Screen/auth/screens/auth_screen.dart';
 import 'package:pets_mall/Screen/auth/services/auth_service.dart';
 import 'package:pets_mall/Screen/home/screens/home_screen.dart';
@@ -45,7 +46,9 @@ class _MyAppState extends State<MyApp> {
       ),
       onGenerateRoute: ((settings) => generateRoute(settings)),
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? const BottomBar()
+          ? Provider.of<UserProvider>(context).user.type == "user"
+              ? const BottomBar()
+              : const AdminScreen()
           : const AuthScreen(),
     );
   }

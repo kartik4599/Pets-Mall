@@ -1,5 +1,6 @@
 const express = require("express"); // importing express
 const mongoose = require("mongoose");
+const adminRoute = require("./routes/admin");
 const authRoute = require("./routes/auth");
 const DB =
   "mongodb+srv://kartik:kartik123@cluster0.ubloqf3.mongodb.net/?retryWrites=true&w=majority";
@@ -9,6 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use(authRoute);
+app.use(adminRoute);
 
 mongoose
   .connect(DB)

@@ -1,32 +1,29 @@
-import 'package:badges/badges.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pets_mall/Screen/home/screens/home_screen.dart';
-import 'package:pets_mall/Screen/account/screens/account_screen.dart';
+import 'package:pets_mall/Screen/admin/screen/post_screen.dart';
 import 'package:pets_mall/constant/globalVarable.dart';
 
-class BottomBar extends StatefulWidget {
-  static const String routeName = "/actual-home";
-  const BottomBar({super.key});
+class AdminScreen extends StatefulWidget {
+  static const String routeName = "/admin";
+  const AdminScreen({super.key});
 
   @override
-  State<BottomBar> createState() => _BottomBarState();
+  State<AdminScreen> createState() => _AdminScreenState();
 }
 
-class _BottomBarState extends State<BottomBar> {
-  int _page = 1;
+class _AdminScreenState extends State<AdminScreen> {
+  int _page = 0;
   double bottomWedth = 43;
   double bottomBorderWidht = 3;
 
   List<Widget> pages = [
     const Center(
-      child: HomeScreen(),
+      child: PostScreen(),
     ),
     const Center(
-      child: Text("Cart Page"),
+      child: Text("Orders"),
     ),
     const Center(
-      child: AccountScreen(),
+      child: Text("Account"),
     )
   ];
 
@@ -39,6 +36,34 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: AppBar(
+          flexibleSpace: Container(
+            decoration:
+                const BoxDecoration(gradient: GlobalVariable.appBarGradient),
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                alignment: Alignment.topLeft,
+                child: Image.asset(
+                  "assets/images/amazon_in.png",
+                  width: 120,
+                  height: 45,
+                  color: Colors.black,
+                ),
+              ),
+              const Text(
+                "Admin",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: GlobalVariable.blue),
+              )
+            ],
+          ),
+        ),
+      ),
       body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
@@ -48,7 +73,7 @@ class _BottomBarState extends State<BottomBar> {
         iconSize: 28,
         onTap: updatePage,
         items: [
-          // Home Page
+          // Posts
           BottomNavigationBarItem(
               icon: Container(
                 width: bottomWedth,
@@ -61,27 +86,20 @@ class _BottomBarState extends State<BottomBar> {
                 child: const Icon(Icons.home_outlined),
               ),
               label: ""),
-          // Profile
+          // Analytics
           BottomNavigationBarItem(
               icon: Container(
+                width: bottomWedth,
                 decoration: BoxDecoration(
                     border: Border(
                         top: BorderSide(
                             color:
                                 _page == 1 ? GlobalVariable.blue : Colors.white,
                             width: bottomBorderWidht))),
-                width: bottomWedth,
-                child: Badge(
-                    elevation: 0,
-                    badgeContent: const Text(
-                      "2",
-                      style: TextStyle(color: GlobalVariable.blue),
-                    ),
-                    badgeColor: Colors.white,
-                    child: const Icon(CupertinoIcons.cart)),
+                child: const Icon(Icons.analytics_outlined),
               ),
               label: ""),
-          // Cart
+          // Account
           BottomNavigationBarItem(
               icon: Container(
                 width: bottomWedth,

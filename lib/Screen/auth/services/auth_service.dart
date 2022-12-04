@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pets_mall/Screen/home/screens/home_screen.dart';
+// import 'package:pets_mall/Screen/home/screens/home_screen.dart';
 import 'package:pets_mall/common/widgets/bottom_bar.dart';
 import 'package:pets_mall/constant/err_handling.dart';
+import 'package:pets_mall/constant/globalVarable.dart';
 import 'package:pets_mall/constant/utils.dart';
 import 'package:pets_mall/models/user.dart';
 import 'package:http/http.dart' as http;
@@ -12,10 +13,11 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
-  // http://192.168.159.157:2000 mobile
+  // http://192.168.99.157:2000 mobile
+  // http://192.168.1.101:2000 cs lab
   // http://192.168.137.19:2000
   // http://192.168.88.157:2000
-  String uri = "http://192.168.88.157:2000";
+  // String uri = "http://192.168.99.157:2000";
   void signUpUser(
       {required BuildContext context,
       required String email,
